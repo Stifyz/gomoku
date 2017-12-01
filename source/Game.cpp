@@ -1,5 +1,5 @@
 //
-// Created by 53915 on 30/11/2017.
+// Created by zimmer_n on 30/11/2017.
 //
 
 #include <utility>
@@ -19,13 +19,12 @@ Game::Game(const unsigned int height, const unsigned int width) {
     m_boardWidth = width;
 }
 
-void Game::addInfo(const std::string &info) {
-    auto it = m_info.find(info.substr(0, info.find_first_of(' ')));
+void Game::addInfo(const std::string &key, const std::string &value) {
+    auto it = m_info.find(key);
     if (it == m_info.end())
-        m_info.insert(std::pair<std::string, std::string>(info.substr(0, info.find_first_of(' ')),
-                                                          info.substr(info.find_first_of(' ') + 1)));
+        m_info.insert(std::make_pair(key, value));
     else
-        m_info.at(info.substr(0, info.find_first_of(' '))) = info.substr(info.find_first_of(' ') + 1);
+        m_info.at(key) = value;
 }
 
 const std::string &Game::getInfo(const std::string &key) {
@@ -42,10 +41,12 @@ int Game::boardGet(const unsigned int x, const unsigned int y) {
     return m_board[y][x];
 }
 
-void Game::boardSet(const unsigned int x, const unsigned int y, const int value) {
+bool Game::boardSet(const unsigned int x, const unsigned int y, const int value) {
     if (x >= m_boardWidth || y >= m_boardHeight || value < 0)
-        return ;
+        return false;
     m_board[y][x] = value;
+    m_isEmptyBoard = false;
+    return true;
 }
 
 void Game::size(const int size) {
@@ -90,6 +91,10 @@ int Game::width() {
 
 bool Game::isSquare() {
     return m_isSquare;
+}
+
+bool Game::isEmptyBoard() {
+    return m_isEmptyBoard;
 }
 
 // Private Functions

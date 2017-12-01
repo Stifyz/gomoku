@@ -84,19 +84,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/53915/Documents/gomoku/include/AI.hpp">
+			<Option target="gomoku"/>
+		</Unit>
+		<Unit filename="C:/Users/53915/Documents/gomoku/include/Application.hpp">
+			<Option target="gomoku"/>
+		</Unit>
+		<Unit filename="C:/Users/53915/Documents/gomoku/include/Brain.hpp">
+			<Option target="gomoku"/>
+		</Unit>
 		<Unit filename="C:/Users/53915/Documents/gomoku/include/Game.hpp">
 			<Option target="gomoku"/>
 		</Unit>
 		<Unit filename="C:/Users/53915/Documents/gomoku/include/Protocol.hpp">
 			<Option target="gomoku"/>
 		</Unit>
+		<Unit filename="C:/Users/53915/Documents/gomoku/source/AI.cpp">
+			<Option target="gomoku"/>
+		</Unit>
+		<Unit filename="C:/Users/53915/Documents/gomoku/source/Brain.cpp">
+			<Option target="gomoku"/>
+		</Unit>
 		<Unit filename="C:/Users/53915/Documents/gomoku/source/Game.cpp">
 			<Option target="gomoku"/>
 		</Unit>
-		<Unit filename="C:/Users/53915/Documents/gomoku/source/Game2.cpp">
-			<Option target="gomoku"/>
-		</Unit>
-		<Unit filename="C:/Users/53915/Documents/gomoku/source/Game2.hpp">
+		<Unit filename="C:/Users/53915/Documents/gomoku/source/Protocol.cpp">
 			<Option target="gomoku"/>
 		</Unit>
 		<Unit filename="C:/Users/53915/Documents/gomoku/source/main.cpp">
