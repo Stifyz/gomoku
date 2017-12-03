@@ -14,6 +14,10 @@
 #include <future>
 #include <iostream>
 
+#define NAME "pbrain-GroMoCrew"
+#define VERSION "1.0"
+#define AUTHORS "nicolas.zimmermann@epitech.eu,lucas.thevenard@epitech.eu,thomas1.bunel@epitech.eu"
+#define COUNTRY "FR"
 
 std::string getInput() {
     std::string str;
@@ -28,8 +32,7 @@ public:
     void run();
 private:
     Protocol m_protocol;
-    const std::shared_ptr<Game> m_game;
-    // std::future<std::string> m_receive);
+    // std::future<std::string> m_receive;
     AI m_ai;
 };
 

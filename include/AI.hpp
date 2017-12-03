@@ -5,15 +5,19 @@
 #ifndef GOMOKU_AI_HPP
 #define GOMOKU_AI_HPP
 
+#include "Protocol.hpp"
+
 class AI {
 public:
-    Pos think();
-    Pos think(int timeOutMillisecond);
+    AI::AI(const std::shared_ptr<Game> &game);
 
-    struct Pos {
-        unsigned int x;
-        unsigned int y;
-    };
+    Protocol::AIReturn think();
+    Protocol::AIReturn think(int timeOutMillisecond);
+
+private:
+    const std::shared_ptr<Game> m_game;
+
+    Game::Pos getRandomPos(const std::list<Game::Pos> &list);
 };
 
 #endif //GOMOKU_AI_HPP

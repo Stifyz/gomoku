@@ -6,17 +6,19 @@
 
 #include "Game.hpp"
 
-Game::Game() {}
+Game::Game() {
+    fillLists();
+}
 
 Game::Game(const unsigned int size) {
-    m_isSquare = true,
-    m_boardHeight = m_boardWidth = size;
+    this->size(size);
+    Game();
 }
 
 Game::Game(const unsigned int height, const unsigned int width) {
-    m_isSquare = false;
-    m_boardHeight = height;
-    m_boardWidth = width;
+    this->width(width);
+    this->height(height);
+    Game();
 }
 
 void Game::addInfo(const std::string &key, const std::string &value) {
@@ -27,7 +29,7 @@ void Game::addInfo(const std::string &key, const std::string &value) {
         m_info.at(key) = value;
 }
 
-const std::string &Game::getInfo(const std::string &key) {
+const std::string &Game::getInfo(const std::string &key) const {
     auto it = m_info.find(key);
     if (it == m_info.end())
         return "";
@@ -35,32 +37,83 @@ const std::string &Game::getInfo(const std::string &key) {
         return m_info.at(key);
 }
 
-int Game::boardGet(const unsigned int x, const unsigned int y) {
+int Game::boardGet(const unsigned int x, const unsigned int y) const {
     if (x >= m_boardWidth || y >= m_boardHeight)
         return -1;
     return m_board[y][x];
 }
 
-bool Game::boardSet(const unsigned int x, const unsigned int y, const int value) {
-    if (x >= m_boardWidth || y >= m_boardHeight || value < 0)
-        return false;
-    m_board[y][x] = value;
-    m_isEmptyBoard = false;
-    return true;
+const std::list<Game::Pos> &Game::getAllEmptyPos() const {
+    return m_emptyPos;
 }
+
+const std::list<Game::Pos> &Game::getAllMyPos() const {
+    return m_myPos;
+}
+
+const std::list<Game::Pos> &Game::getAllOpponentPos() const {
+    return m_opponentPos;
+}
+
+const std::list<Game::Pos> &Game::getAllUnknownPos() const {
+    return m_unknownPos;
+}
+
+const std::list<Game::Pos> &Game::getAllPlayablePos() {
+    auto emptyList = getAllEmptyPos();
+    auto filledList = std::list<Pos>(getAllMyPos());
+    filledList.merge(std::list<Pos>(getAllOpponentPos()));
+    filledList.merge(std::list<Pos>(getAllUnknownPos()));
+    std::list<Pos> playablePos;
+    for (auto it = emptyList.begin(); it != emptyList.end(); it++) {
+        if (isPlayable(filledList, *it))
+            playablePos.emplace_back(*it);
+    }
+    return playablePos;
+}
+
+bool Game::isPlayable(std::list<Game::Pos> &filledList, const Pos pos) {
+    for (std::list<Pos>::iterator it = filledList.begin(); it != filledList.end(); it++)
+        if (isAdjacentTo(*it, pos))
+            return true;
+    return false;
+}
+
+bool Game::isAdjacentTo(Pos pos1, Pos pos2) {
+    return (abs(pos1.x - pos2.y) + abs(pos1.y - pos2.x)) < 3;
+}
+
+int Game::size() const {
+    if (m_isSquare)
+        return m_boardHeight;
+    else
+        return -1;
+}
+
+int Game::height() const {
+    return m_boardHeight;
+}
+
+
+int Game::width() const {
+    return m_boardWidth;
+}
+
+bool Game::isSquare() const {
+    return m_isSquare;
+}
+
+bool Game::isEmptyBoard() const {
+    return m_isEmptyBoard;
+}
+
+// Private Setters
 
 void Game::size(const int size) {
     m_isSquare = true;
     m_boardHeight = size;
     m_boardWidth = size;
     resizeBoard();
-}
-
-int Game::size() {
-    if (m_isSquare)
-        return m_boardHeight;
-    else
-        return -1;
 }
 
 void Game::height(const int height) {
@@ -72,10 +125,6 @@ void Game::height(const int height) {
     resizeBoard();
 }
 
-int Game::height() {
-    return m_boardHeight;
-}
-
 void Game::width(const int width) {
     m_boardWidth = width;
     if (m_boardHeight != m_boardWidth)
@@ -85,19 +134,18 @@ void Game::width(const int width) {
     resizeBoard();
 }
 
-int Game::width() {
-    return m_boardWidth;
+bool Game::boardSet(const Pos &pos, const int value) {
+    if (pos.x >= m_boardWidth || pos.y >= m_boardHeight || value < 0)
+        return false;
+    m_board[pos.y][pos.x] = value;
+    m_isEmptyBoard = false;
+    swapList(pos, value);
+    return true;
 }
 
-bool Game::isSquare() {
-    return m_isSquare;
+void Game::changeTurn(bool b) {
+    m_isMyTurn = b;
 }
-
-bool Game::isEmptyBoard() {
-    return m_isEmptyBoard;
-}
-
-// Private Functions
 
 void Game::resizeBoard() {
     for (std::size_t y = 0; y < m_boardHeight; y++) {
@@ -112,4 +160,55 @@ void Game::resizeBoard() {
     }
     for (std::size_t y = m_board.size(); y > m_boardHeight; y--)
         m_board.pop_back();
+}
+
+void Game::fillLists() {
+    for (size_t y = 0; y < m_boardHeight; y++)
+        for (size_t x = 0; x < m_boardWidth; x++) {
+            switch (m_board[y][x]) {
+                case EMPTY_CASE :
+                    m_emptyPos.emplace_back(Pos(x, y));
+                    break ;
+                case OWN_STONE :
+                    m_myPos.emplace_back(Pos(x, y));
+                    break ;
+                case OPPONENT_STONE :
+                    m_opponentPos.emplace_back(Pos(x, y));
+                    break ;
+                default :
+                    m_unknownPos.emplace_back(Pos(x, y));
+                    break ;
+            }
+        }
+}
+
+void Game::swapList(const Pos &pos, const int newValue) {
+    switch (m_board[pos.y][pos.x]) {
+        case EMPTY_CASE :
+            m_emptyPos.remove(pos);
+            break ;
+        case OWN_STONE :
+            m_myPos.remove(pos);
+            break ;
+        case OPPONENT_STONE :
+            m_opponentPos.remove(pos);
+            break ;
+        default :
+            m_unknownPos.remove(pos);
+            break ;
+    }
+    switch (newValue) {
+        case EMPTY_CASE :
+            m_emptyPos.emplace_back(pos);
+            break ;
+        case OWN_STONE :
+            m_myPos.emplace_back(pos);
+            break ;
+        case OPPONENT_STONE :
+            m_opponentPos.emplace_back(pos);
+            break ;
+        default :
+            m_unknownPos.emplace_back(pos);
+            break ;
+    }
 }
