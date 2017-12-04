@@ -1,9 +1,10 @@
 #include <Brain.hpp>
 
 int main() {
+    Application app;
     std::shared_ptr<Game> game(new Game);
     Brain brain(game);
-    brain.start();
+    app.start();
     brain.run();
     return 0;
 }

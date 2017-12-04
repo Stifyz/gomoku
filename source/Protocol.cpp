@@ -4,10 +4,13 @@
 
 #include <utility>
 #include <iostream>
+#include <Application.hpp>
+#include <Info.h>
 
 #include "Protocol.hpp"
+#include "Game.hpp"
 
-Protocol::Protocol(const std::shared_ptr<Game> game, const std::unique_ptr<Brain> brain) : m_game(game), m_brain(brain.get()) {
+Protocol::Protocol(const std::shared_ptr<Game> game) : m_game(game) {
     m_func.insert(std::make_pair(Action::START, &start));
     m_func.insert(std::make_pair(Action::TURN, &turn));
     m_func.insert(std::make_pair(Action::BEGIN, &begin));
@@ -26,6 +29,19 @@ Protocol::Protocol(const std::shared_ptr<Game> game, const std::unique_ptr<Brain
     m_func.insert(std::make_pair(Action::SUGGEST, &suggest));
 }
 
+// GameSetter
+
+//static void Protocol::GameSetter::size(Game &game, const unsigned int size) { game.size(size); }
+//static void Protocol::GameSetter::height(Game &game, const unsigned int height) { game.height(height); }
+//static void Protocol::GameSetter::width(Game &game, const unsigned int width) { game.height(width); }
+
+//static void Protocol::GameSetter::addInfo(Game &game, const std::string &key, const std::string &value) { game.addInfo(key, value); }
+//static bool Protocol::GameSetter::boardSet(Game &game, const Game::Pos &pos, const int value) { game.boardSet(pos, value); }
+//static void Protocol::GameSetter::changeTurn(Game &game) { game.changeTurn(); }
+//static void Protocol::GameSetter::changeTurn(Game &game, bool b) { game.changeTurn(b); }
+
+// !GameSetter
+
 void Protocol::processInput(const std::string &line) {
     const std::string cmmd(line.substr(0, line.find_first_of(' ')));
     const std::string arg(line.substr(line.find_first_of(' ')));
@@ -35,7 +51,8 @@ void Protocol::processInput(const std::string &line) {
         return ;
     }
     m_lastAction = m_action.at(cmmd);
-    m_func.at(m_action.at(cmmd))(arg);
+    MethodPointer func = m_func.at(m_action.at(cmmd));
+    (this->*func)(arg);
 }
 
 void Protocol::processOutput(const AIReturn &aiRes) {
@@ -47,7 +64,7 @@ void Protocol::processOutput(const AIReturn &aiRes) {
 
 void Protocol::processOutput(const unsigned int x, const unsigned int y) {
     Game::Pos pos(x, y);
-    GameSetter::boardSet(*m_game, pos, OWN_STONE);
+    Game::GameSetter::boardSet(*m_game, pos, OWN_STONE);
     send(Action::NONE, std::to_string(x)+','+std::to_string(y));
 }
 
@@ -75,7 +92,7 @@ void Protocol::start(const std::string &arg) {
         send(Action::ERROR, "Size must be positive");
         return ;
     }
-    GameSetter::size(*m_game, size);
+    Game::GameSetter::size(*m_game, size);
     m_lastAction = Action::START;
 }
 
@@ -99,7 +116,7 @@ void Protocol::turn(const std::string &arg) {
         send(Action::ERROR, "The argument y is out of range");
         return ;
     }
-    if (!GameSetter::boardSet(*m_game, pos, OPPONENT_STONE))
+    if (!Game::GameSetter::boardSet(*m_game, pos, OPPONENT_STONE))
         send(Action::ERROR, "The given case is out of the board");
     m_lastAction = Action::TURN;
 }
@@ -109,7 +126,7 @@ void Protocol::begin(const std::string &arg) {
         send(Action::ERROR, "BEGIN command cannot be called on no-empty board");
         return ;
     }
-    GameSetter::changeTurn(*m_game, true);
+    Game::GameSetter::changeTurn(*m_game, MY_TURN);
     m_lastAction = Action::BEGIN;
 }
 
@@ -158,17 +175,18 @@ void Protocol::board(const std::string &arg) {
             send(Action::ERROR, "The argument value is out of range");
             return ;
         }
-        GameSetter::boardSet(*m_game, pos, value);
+        Game::GameSetter::boardSet(*m_game, pos, value);
         std::getline(std::cin, buf);
     }
 }
 
 void Protocol::info(const std::string &arg) {
-    GameSetter::addInfo(*m_game, arg.substr(0, arg.find_first_of(' ')), arg.substr(arg.find_first_of(' ') + 1));
+    Game::GameSetter::addInfo(*m_game, arg.substr(0, arg.find_first_of(' ')), arg.substr(arg.find_first_of(' ') + 1));
 }
 
 void Protocol::end(const std::string &arg) {
-    m_brain->stop();
+    Application app;
+    app.stop();
 }
 
 void Protocol::about(const std::string &arg) {
@@ -204,8 +222,8 @@ void Protocol::recStart(const std::string &arg) {
         send(Action::ERROR, "Height must be positive");
         return ;
     }
-    GameSetter::width(*m_game, width);
-    GameSetter::height(*m_game, height);
+    Game::GameSetter::width(*m_game, width);
+    Game::GameSetter::height(*m_game, height);
 }
 
 void Protocol::reStart(const std::string &arg) {

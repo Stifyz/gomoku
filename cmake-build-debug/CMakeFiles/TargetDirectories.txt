@@ -1,0 +1,3 @@
+C:/Users/53915/Documents/gomoku/cmake-build-debug/CMakeFiles/pbrain-GroMoCrew.dir
+C:/Users/53915/Documents/gomoku/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/53915/Documents/gomoku/cmake-build-debug/CMakeFiles/rebuild_cache.dir
