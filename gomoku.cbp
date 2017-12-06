@@ -108,6 +108,9 @@
 		<Unit filename="C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/AI.cpp">
 			<Option target="pbrain-GroMoCrew"/>
 		</Unit>
+		<Unit filename="C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Application.cpp">
+			<Option target="pbrain-GroMoCrew"/>
+		</Unit>
 		<Unit filename="C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Brain.cpp">
 			<Option target="pbrain-GroMoCrew"/>
 		</Unit>

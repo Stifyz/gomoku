@@ -4,8 +4,13 @@
 
 #include <random>
 #include "AI.hpp"
+// Function extern
 
-AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(&MySort) {}
+bool	mySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2) {
+    return (x.second < x2.second);
+}
+
+AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(std::multiset<std::pair<Game::Pos, int>, bool (*)(std::pair<Game::Pos, int>, std::pair<Game::Pos, int>)>(&mySort)) {}
 
 Protocol::AIReturn AI::think() {
     think(0);
@@ -18,16 +23,13 @@ Protocol::AIReturn AI::think(int timeOutMillisecond) {
     int	tmpWeight;
     tmpList = m_game->getAllPlayablePos();
     ret.isPos = true;
-<<<<<<< HEAD
     ret.pos = getRandomPos(m_game->getAllPlayablePos());
     for (auto it = tmpList.begin(); it != tmpList.end(); it++) {
       tmpWeight = evalPos(*it);
       m_moveAi.addInList(*it, tmpWeight);
     }
     ret.pos = m_moveAi.getFirst();
-=======
-    ret.pos = getRandomPos(m_game->getAllEmptyPos());
->>>>>>> 0998b64732f950798731d3f9b71de95439d2f637
+    //ret.pos = getRandomPos(m_game->getAllEmptyPos());
     return ret;
 }
 
@@ -215,10 +217,6 @@ int	AI::evalPos(const Game::Pos &pos) {
     return (eval);
 }
 
-// Function extern
 
-bool	MySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2) {
-  return (x.second < x2.second);
-}
 
 

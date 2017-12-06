@@ -93,7 +93,7 @@ void Protocol::send(const Action action, const std::string &str) {
 }
 
 void Protocol::start(const std::string &arg) {
-    Application app;
+    Application &app = Application::getInstance();
     int size;
     try {
         size = std::stoi(arg);
@@ -207,7 +207,7 @@ void Protocol::info(const std::string &arg) {
 }
 
 void Protocol::end(const std::string &arg) {
-    Application app;
+    Application &app = Application::getInstance();
     app.stop();
 }
 
@@ -216,7 +216,7 @@ void Protocol::about(const std::string &arg) {
 }
 
 void Protocol::recStart(const std::string &arg) {
-    Application app;
+    Application &app = Application::getInstance();
     int width;
     try {
         width = std::stoi(arg.substr(0, arg.find_first_of(',')));
