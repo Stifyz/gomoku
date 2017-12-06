@@ -15,18 +15,16 @@ Protocol::AIReturn AI::think(int timeOutMillisecond) {
     (void)timeOutMillisecond;
     Protocol::AIReturn ret;
     ret.isPos = true;
-    ret.pos = getRandomPos(m_game->getAllPlayablePos());
+    ret.pos = getRandomPos(m_game->getAllEmptyPos());
     return ret;
 }
 
 // Private Functions
 
 Game::Pos AI::getRandomPos(const std::list<Game::Pos> &list) {
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(0, list.size());
-    int rand = distribution(generator);
+    int rando = rand() % list.size();
     auto it = list.begin();
-    for (size_t i = 0; i < rand; i++, it++);
+    for (size_t i = 0; i < rando; i++, it++);
     return *it;
 }
 

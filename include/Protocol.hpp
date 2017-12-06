@@ -20,6 +20,7 @@ public:
 
     enum class Action {
         NONE,
+        OK,
         START,
         TURN,
         BEGIN,
@@ -57,6 +58,7 @@ private:
     Action m_lastAction;
     const std::map<const std::string, const Action> m_action = {
             {"", Action::NONE},
+            {"OK", Action::OK},
             {"START", Action::START},
             {"TURN", Action::TURN},
             {"BEGIN", Action::BEGIN},
@@ -76,6 +78,7 @@ private:
     };
     const std::map<const Action, const std::string> m_actionToString = {
             {Action::NONE, ""},
+            {Action::OK, "OK"},
             {Action::START, "START"},
             {Action::TURN, "TURN"},
             {Action::BEGIN, "BEGIN"},
@@ -97,6 +100,7 @@ private:
     void send(const Action action, const std::string &str);
 
     void start(const std::string &cmmd);
+    void ok(const std::string &cmmd);
     void turn(const std::string &cmmd);
     void begin(const std::string &cmmd);
     void board(const std::string &cmmd);

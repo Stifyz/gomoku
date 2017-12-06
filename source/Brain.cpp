@@ -10,11 +10,17 @@ Brain::Brain(const std::shared_ptr <Game> game) : m_protocol(game), m_ai(game) {
 }
 
 void Brain::run() {
+    bool        b = true;
     Application app;
-    while (app.isRunning()) {
-        m_protocol.processOutput(m_ai.think());
-        // TODO: Resolv problem with std::future for multithreading getInput
+    while (!app.isRunning() && b) {
         std::string receive = getMyInput();
         m_protocol.processInput(receive);
+        while (app.isRunning()) {
+            b = false;
+            m_protocol.processOutput(m_ai.think());
+            // TODO: Resolv problem with std::future for multithreading getInput
+            std::string receive = getMyInput();
+            m_protocol.processInput(receive);
+        }
     }
 }
