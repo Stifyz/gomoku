@@ -8,9 +8,11 @@
 #include "Protocol.hpp"
 #include "MyMultiset.hpp"
 
+#include <memory>
+
 class AI {
 public:
-    AI::AI(const std::shared_ptr<Game> &game);
+    AI(const std::shared_ptr<Game> &game);
 
     Protocol::AIReturn think();
     Protocol::AIReturn think(int timeOutMillisecond);

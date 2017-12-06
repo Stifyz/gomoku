@@ -8,6 +8,7 @@
 
 Game::Game() {
     fillLists();
+    m_info.insert(std::make_pair<std::string, std::string>("NONE", ""));
 }
 
 Game::Game(const unsigned int size) {
@@ -32,7 +33,7 @@ void Game::addInfo(const std::string &key, const std::string &value) {
 const std::string &Game::getInfo(const std::string &key) const {
     auto it = m_info.find(key);
     if (it == m_info.end())
-        return "";
+        return m_info.at("NONE");
     else
         return m_info.at(key);
 }
@@ -61,7 +62,7 @@ const std::list<Game::Pos> &Game::getAllUnknownPos() const {
 
 const std::list<Game::Pos> &Game::getAllPlayablePos() {
     auto emptyList = getAllEmptyPos();
-    auto filledList = std::list<Pos>(getAllMyPos());
+    std::list<Pos> filledList(getAllMyPos());
     filledList.merge(std::list<Pos>(getAllOpponentPos()));
     filledList.merge(std::list<Pos>(getAllUnknownPos()));
     std::list<Pos> playablePos;
@@ -69,7 +70,7 @@ const std::list<Game::Pos> &Game::getAllPlayablePos() {
         if (isPlayable(filledList, *it))
             playablePos.emplace_back(*it);
     }
-    return playablePos;
+    return m_playablePos = playablePos;
 }
 
 bool Game::isPlayable(std::list<Game::Pos> &filledList, const Pos pos) {
@@ -79,7 +80,7 @@ bool Game::isPlayable(std::list<Game::Pos> &filledList, const Pos pos) {
     return false;
 }
 
-bool Game::isAdjacentTo(Pos pos1, Pos pos2) {
+bool Game::isAdjacentTo(Pos pos1, Pos pos2) const {
     return (abs(pos1.x - pos2.y) + abs(pos1.y - pos2.x)) < 3;
 }
 
@@ -94,7 +95,6 @@ int Game::height() const {
     return m_boardHeight;
 }
 
-
 int Game::width() const {
     return m_boardWidth;
 }
@@ -105,6 +105,10 @@ bool Game::isSquare() const {
 
 bool Game::isEmptyBoard() const {
     return m_isEmptyBoard;
+}
+
+const Game::Pos &Game::lastPlay() const {
+    return m_lastPlay;
 }
 
 // Private Setters
@@ -140,6 +144,7 @@ bool Game::boardSet(const Pos &pos, const int value) {
     m_board[pos.y][pos.x] = value;
     m_isEmptyBoard = false;
     swapList(pos, value);
+    m_lastPlay = pos;
     return true;
 }
 
@@ -212,3 +217,4 @@ void Game::swapList(const Pos &pos, const int newValue) {
             break ;
     }
 }
+

@@ -5,15 +5,16 @@
 #include <iostream>
 #include "Brain.hpp"
 
-Brain::Brain(const std::shared_ptr <Game> game) : m_protocol(game, this), m_ai(game) {
+Brain::Brain(const std::shared_ptr <Game> game) : m_protocol(game), m_ai(game) {
     // m_receive = std::async(std::launch::async, getInput);
 }
 
 void Brain::run() {
-    while (isRunning()) {
+    Application app;
+    while (app.isRunning()) {
         m_protocol.processOutput(m_ai.think());
         // TODO: Resolv problem with std::future for multithreading getInput
-        std::string receive = getInput();
+        std::string receive = getMyInput();
         m_protocol.processInput(receive);
     }
 }
