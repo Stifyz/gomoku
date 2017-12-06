@@ -12,7 +12,7 @@ template<class T, class U>
 class MyMultiset {
 public :
     using compareFunc = bool (*)(std::pair<T, U>, std::pair<T, U>);
-    MyMultiset(const compareFunc &func) : std::multiset<std::pair<T, U>, compareFunc>(func) {}
+    MyMultiset(const compareFunc *func) : std::multiset<std::pair<T, U>, compareFunc>(*func) {}
 
     U operator[](T key) {
         for (auto it = m_multiset.begin(); it != m_multiset.end(); it++)
@@ -31,6 +31,9 @@ public :
         }
     }
 
+    Game::Pos getFirst() {
+        return *(m_multiset.begin())->first;
+    }
 private:
     std::multiset<std::pair<T, U>, bool *(std::pair<T, U>, std::pair<T, U>)> m_multiset;
 };

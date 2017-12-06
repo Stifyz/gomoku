@@ -5,7 +5,7 @@
 #include <random>
 #include "AI.hpp"
 
-AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(MySort) {}
+AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(&MySort) {}
 
 Protocol::AIReturn AI::think() {
     think(0);
@@ -16,14 +16,14 @@ Protocol::AIReturn AI::think(int timeOutMillisecond) {
     Protocol::AIReturn ret;
     std::list<Game::Pos> tmpList;
     int	tmpWeight;
-    &tmpList = m_game->getAllPlayablePos();
+    tmpList = m_game->getAllPlayablePos();
     ret.isPos = true;
     ret.pos = getRandomPos(m_game->getAllPlayablePos());
     for (auto it = tmpList.begin(); it != tmpList.end(); it++) {
       tmpWeight = evalPos(*it);
       m_moveAi.addInList(*it, tmpWeight);
     }
-    ret.pos = m_moveAi.begin();
+    ret.pos = m_moveAi.getFirst();
     return ret;
 }
 
@@ -38,7 +38,7 @@ Game::Pos AI::getRandomPos(const std::list<Game::Pos> &list) {
     return *it;
 }
 
-int	AI::ckeck_diagNE(Game::Pos pos) {
+int	AI::check_diagNE(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -58,7 +58,7 @@ int	AI::ckeck_diagNE(Game::Pos pos) {
     return val;
 }
 
-int	AI::ckeck_diagNW(Game::Pos pos) {
+int	AI::check_diagNW(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -78,7 +78,7 @@ int	AI::ckeck_diagNW(Game::Pos pos) {
     return val;
 }
 
-int	AI::ckeck_diagSE(Game::Pos pos) {
+int	AI::check_diagSE(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -98,7 +98,7 @@ int	AI::ckeck_diagSE(Game::Pos pos) {
     return val;
 }
 
-int	AI::ckeck_diagSW(Game::Pos pos) {
+int	AI::check_diagSW(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -118,7 +118,7 @@ int	AI::ckeck_diagSW(Game::Pos pos) {
     return val;
 }
 
-int	AI::check_vert(Game::Pos pos) {
+int	AI::check_vert(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -138,7 +138,7 @@ int	AI::check_vert(Game::Pos pos) {
     return val;
 }
 
-int	AI::check_vertReverse(Game::Pos pos) {
+int	AI::check_vertReverse(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -158,7 +158,7 @@ int	AI::check_vertReverse(Game::Pos pos) {
     return val;
 }
 
-int	AI::check_horiReverse(Game::Pos pos) {
+int	AI::check_horiReverse(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -178,7 +178,7 @@ int	AI::check_horiReverse(Game::Pos pos) {
     return val;
 }
 
-int	AI::check_hori(Game::Pos pos) {
+int	AI::check_hori(const Game::Pos &pos) {
     int i;
     int val;
 
@@ -198,7 +198,7 @@ int	AI::check_hori(Game::Pos pos) {
     return val;
 }
 
-int	AI::evalPos(Game::Pos pos) {
+int	AI::evalPos(const Game::Pos &pos) {
     int	eval;
 
     eval = 0;
@@ -216,7 +216,7 @@ int	AI::evalPos(Game::Pos pos) {
 // Function extern
 
 bool	MySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2) {
-  return (x.second() < x2.second());
+  return (x.second < x2.second);
 }
 
 

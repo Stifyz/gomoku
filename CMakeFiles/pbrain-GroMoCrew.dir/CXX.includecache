@@ -6,25 +6,25 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/53915/Documents/gomoku/source/AI.cpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/AI.cpp
 random
 -
 AI.hpp
-C:/Users/53915/Documents/gomoku/source/AI.hpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/AI.hpp
 
-C:/Users/53915/Documents/gomoku/source/Brain.cpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Brain.cpp
 iostream
 -
 Brain.hpp
-C:/Users/53915/Documents/gomoku/source/Brain.hpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Brain.hpp
 
-C:/Users/53915/Documents/gomoku/source/Game.cpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Game.cpp
 utility
 -
 Game.hpp
-C:/Users/53915/Documents/gomoku/source/Game.hpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Game.hpp
 
-C:/Users/53915/Documents/gomoku/source/Protocol.cpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Protocol.cpp
 utility
 -
 iostream
@@ -34,17 +34,19 @@ Application.hpp
 Info.h
 -
 Protocol.hpp
-C:/Users/53915/Documents/gomoku/source/Protocol.hpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Protocol.hpp
 Game.hpp
-C:/Users/53915/Documents/gomoku/source/Game.hpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Game.hpp
 
-C:/Users/53915/Documents/gomoku/source/main.cpp
+C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/main.cpp
 Brain.hpp
 -
 
 include/AI.hpp
 Protocol.hpp
 include/Protocol.hpp
+MyMultiset.hpp
+include/MyMultiset.hpp
 memory
 -
 
@@ -71,6 +73,12 @@ vector
 -
 
 include/Info.h
+
+include/MyMultiset.hpp
+set
+-
+utility
+-
 
 include/Protocol.hpp
 Game.hpp

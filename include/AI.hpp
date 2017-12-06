@@ -21,15 +21,16 @@ private:
     MyMultiset<Game::Pos, int>	m_moveAi;
 
     Game::Pos getRandomPos(const std::list<Game::Pos> &list);
-    int	      evalPos(Game::Pos p);
-    int       check_vert(Game::Pos pos);
-    int       check_vertReverse(Game::Pos);
-    int       check_hori(Game::Pos);
-    int       check_horiReverse(Game::Pos);
-    int       check_diagNE(Game::Pos);
-    int       check_diagSE(Game::Pos);
-    int       check_diagSW(Game::Pos);
-    int       check_diagNW(Game::Pos);
+
+    int	      evalPos(const Game::Pos &pos);
+    int       check_vert(const Game::Pos &pos);
+    int       check_vertReverse(const Game::Pos &pos);
+    int       check_hori(const Game::Pos &pos);
+    int       check_horiReverse(const Game::Pos &pos);
+    int       check_diagNE(const Game::Pos &pos);
+    int       check_diagSE(const Game::Pos &pos);
+    int       check_diagSW(const Game::Pos &pos);
+    int       check_diagNW(const Game::Pos &pos);
 };
 
 bool      MySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2);

@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/53915/Documents/gomoku/source/AI.cpp" "C:/Users/53915/Documents/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/AI.cpp.obj"
-  "C:/Users/53915/Documents/gomoku/source/Brain.cpp" "C:/Users/53915/Documents/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/Brain.cpp.obj"
-  "C:/Users/53915/Documents/gomoku/source/Game.cpp" "C:/Users/53915/Documents/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/Game.cpp.obj"
-  "C:/Users/53915/Documents/gomoku/source/Protocol.cpp" "C:/Users/53915/Documents/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/Protocol.cpp.obj"
-  "C:/Users/53915/Documents/gomoku/source/main.cpp" "C:/Users/53915/Documents/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/main.cpp.obj"
+  "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/AI.cpp" "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/AI.cpp.obj"
+  "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Brain.cpp" "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/Brain.cpp.obj"
+  "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Game.cpp" "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/Game.cpp.obj"
+  "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/Protocol.cpp" "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/Protocol.cpp.obj"
+  "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/source/main.cpp" "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/pbrain-GroMoCrew.dir/source/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

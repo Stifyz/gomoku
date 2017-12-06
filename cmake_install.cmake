@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/53915/Documents/gomoku
+# Install script for directory: C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/53915/Documents/gomoku/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
