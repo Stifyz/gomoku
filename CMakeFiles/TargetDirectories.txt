@@ -1,3 +1,0 @@
-C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/pbrain-GroMoCrew.dir
-C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/edit_cache.dir
-C:/Users/Dydimox/Documents/Epitech-Tek3-/AI/gomoku/CMakeFiles/rebuild_cache.dir

@@ -1,7 +1,0 @@
--- The C compiler identification is unknown
--- The CXX compiler identification is unknown
--- Check for working C compiler: C:/MinGW/bin/gcc.exe
--- Check for working C compiler: C:/MinGW/bin/gcc.exe -- broken
--- Configuring incomplete, errors occurred!
-See also "C:/Users/53915/Documents/gomoku/CMakeFiles/CMakeOutput.log".
-See also "C:/Users/53915/Documents/gomoku/CMakeFiles/CMakeError.log".

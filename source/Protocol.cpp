@@ -12,6 +12,7 @@
 
 Protocol::Protocol(const std::shared_ptr<Game> game) : m_game(game) {
     m_func.insert(std::make_pair(Action::START, &start));
+    m_func.insert(std::make_pair(Action::OK, &ok));
     m_func.insert(std::make_pair(Action::TURN, &turn));
     m_func.insert(std::make_pair(Action::BEGIN, &begin));
     m_func.insert(std::make_pair(Action::BOARD, &board));
@@ -43,8 +44,18 @@ Protocol::Protocol(const std::shared_ptr<Game> game) : m_game(game) {
 // !GameSetter
 
 void Protocol::processInput(const std::string &line) {
-    const std::string cmmd(line.substr(0, line.find_first_of(' ')));
-    const std::string arg(line.substr(line.find_first_of(' ')));
+    std::string cmmd;
+    std::string arg;
+
+    if (line.find(' ') == std::string::npos) {
+        cmmd = line;
+        arg = "";
+    }
+    else {
+        cmmd = line.substr(0, line.find_first_of(' '));
+        arg = line.substr(line.find_first_of(' '));
+    }
+
     auto it = m_action.find(cmmd);
     if (it == m_action.end()) {
         send(Action::UNKNOWN, "I don't understand " + cmmd + " command.");
@@ -52,6 +63,7 @@ void Protocol::processInput(const std::string &line) {
     }
     m_lastAction = m_action.at(cmmd);
     MethodPointer func = m_func.at(m_action.at(cmmd));
+    std::cout << "HERE" << std::endl;
     (this->*func)(arg);
 }
 
@@ -65,7 +77,7 @@ void Protocol::processOutput(const AIReturn &aiRes) {
 void Protocol::processOutput(const unsigned int x, const unsigned int y) {
     Game::Pos pos(x, y);
     Game::GameSetter::boardSet(*m_game, pos, OWN_STONE);
-    send(Action::NONE, std::to_string(x)+','+std::to_string(y));
+    send(Action::NONE, std::to_string(x) + ',' + std::to_string(y));
 }
 
 void Protocol::processOutput(const Action action, const std::string &mssg) {
@@ -74,10 +86,14 @@ void Protocol::processOutput(const Action action, const std::string &mssg) {
 
 // Private Methods
 void Protocol::send(const Action action, const std::string &str) {
-    std::cout << m_actionToString.at(action) << " " << str << std::endl;
+    if (action == Action::NONE)
+        std::cout << m_actionToString.at(action) << str << '\r' << std::endl;
+    else
+        std::cout << m_actionToString.at(action) << " " << str << '\r' << std::endl;
 }
 
 void Protocol::start(const std::string &arg) {
+    Application app;
     int size;
     try {
         size = std::stoi(arg);
@@ -94,6 +110,12 @@ void Protocol::start(const std::string &arg) {
     }
     Game::GameSetter::size(*m_game, size);
     m_lastAction = Action::START;
+    ok(" - everything is good");
+    app.start();
+}
+
+void Protocol::ok(const std::string &arg) {
+    send(Action::OK, arg);
 }
 
 void Protocol::turn(const std::string &arg) {
@@ -122,7 +144,7 @@ void Protocol::turn(const std::string &arg) {
 }
 
 void Protocol::begin(const std::string &arg) {
-    if (m_game->isEmptyBoard()) {
+    if (!m_game->isEmptyBoard()) {
         send(Action::ERROR, "BEGIN command cannot be called on no-empty board");
         return ;
     }
@@ -194,6 +216,7 @@ void Protocol::about(const std::string &arg) {
 }
 
 void Protocol::recStart(const std::string &arg) {
+    Application app;
     int width;
     try {
         width = std::stoi(arg.substr(0, arg.find_first_of(',')));
@@ -224,6 +247,8 @@ void Protocol::recStart(const std::string &arg) {
     }
     Game::GameSetter::width(*m_game, width);
     Game::GameSetter::height(*m_game, height);
+    ok(" - parameters are good");
+    app.start();
 }
 
 void Protocol::reStart(const std::string &arg) {

@@ -18,23 +18,25 @@ Protocol::AIReturn AI::think(int timeOutMillisecond) {
     int	tmpWeight;
     tmpList = m_game->getAllPlayablePos();
     ret.isPos = true;
+<<<<<<< HEAD
     ret.pos = getRandomPos(m_game->getAllPlayablePos());
     for (auto it = tmpList.begin(); it != tmpList.end(); it++) {
       tmpWeight = evalPos(*it);
       m_moveAi.addInList(*it, tmpWeight);
     }
     ret.pos = m_moveAi.getFirst();
+=======
+    ret.pos = getRandomPos(m_game->getAllEmptyPos());
+>>>>>>> 0998b64732f950798731d3f9b71de95439d2f637
     return ret;
 }
 
 // Private Functions
 
 Game::Pos AI::getRandomPos(const std::list<Game::Pos> &list) {
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(0, list.size());
-    int rand = distribution(generator);
+    int rando = rand() % list.size();
     auto it = list.begin();
-    for (size_t i = 0; i < rand; i++, it++);
+    for (size_t i = 0; i < rando; i++, it++);
     return *it;
 }
 
