@@ -108,6 +108,9 @@
 		<Unit filename="C:/Users/53915/Documents/gomoku/source/AI.cpp">
 			<Option target="pbrain-GroMoCrew"/>
 		</Unit>
+		<Unit filename="C:/Users/53915/Documents/gomoku/source/Application.cpp">
+			<Option target="pbrain-GroMoCrew"/>
+		</Unit>
 		<Unit filename="C:/Users/53915/Documents/gomoku/source/Brain.cpp">
 			<Option target="pbrain-GroMoCrew"/>
 		</Unit>

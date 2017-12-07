@@ -149,6 +149,33 @@ source/AI.cpp.s:
 	$(MAKE) -f CMakeFiles\pbrain-GroMoCrew.dir\build.make CMakeFiles/pbrain-GroMoCrew.dir/source/AI.cpp.s
 .PHONY : source/AI.cpp.s
 
+source/Application.obj: source/Application.cpp.obj
+
+.PHONY : source/Application.obj
+
+# target to build an object file
+source/Application.cpp.obj:
+	$(MAKE) -f CMakeFiles\pbrain-GroMoCrew.dir\build.make CMakeFiles/pbrain-GroMoCrew.dir/source/Application.cpp.obj
+.PHONY : source/Application.cpp.obj
+
+source/Application.i: source/Application.cpp.i
+
+.PHONY : source/Application.i
+
+# target to preprocess a source file
+source/Application.cpp.i:
+	$(MAKE) -f CMakeFiles\pbrain-GroMoCrew.dir\build.make CMakeFiles/pbrain-GroMoCrew.dir/source/Application.cpp.i
+.PHONY : source/Application.cpp.i
+
+source/Application.s: source/Application.cpp.s
+
+.PHONY : source/Application.s
+
+# target to generate assembly for a file
+source/Application.cpp.s:
+	$(MAKE) -f CMakeFiles\pbrain-GroMoCrew.dir\build.make CMakeFiles/pbrain-GroMoCrew.dir/source/Application.cpp.s
+.PHONY : source/Application.cpp.s
+
 source/Brain.obj: source/Brain.cpp.obj
 
 .PHONY : source/Brain.obj
@@ -269,6 +296,9 @@ help:
 	@echo ... source/AI.obj
 	@echo ... source/AI.i
 	@echo ... source/AI.s
+	@echo ... source/Application.obj
+	@echo ... source/Application.i
+	@echo ... source/Application.s
 	@echo ... source/Brain.obj
 	@echo ... source/Brain.i
 	@echo ... source/Brain.s

@@ -12,7 +12,8 @@ template<class T, class U>
 class MyMultiset {
 public :
     using compareFunc = bool (*)(std::pair<T, U>, std::pair<T, U>);
-    MyMultiset(const compareFunc &func) : std::multiset<std::pair<T, U>, compareFunc>(func) {}
+    //MyMultiset(const compareFunc func) : std::multiset<std::pair<T, U>, compareFunc>(func) {}
+    MyMultiset(const std::multiset<std::pair<T, U>, compareFunc> &&multiset) : m_multiset(multiset) {}
 
     U operator[](T key) {
         for (auto it = m_multiset.begin(); it != m_multiset.end(); it++)
@@ -21,7 +22,7 @@ public :
     }
 
     void addInList(T key, U value) {
-        m_multiset.insert(std::make_pair<T, U>(key, value));
+        m_multiset.insert(std::pair<T, U>(key, value));
     }
 
     void erase(T key) {
@@ -31,8 +32,11 @@ public :
         }
     }
 
+    Game::Pos getFirst() {
+        return (m_multiset.begin())->first;
+    }
 private:
-    std::multiset<std::pair<T, U>, bool *(std::pair<T, U>, std::pair<T, U>)> m_multiset;
+    std::multiset<std::pair<T, U>, compareFunc> m_multiset;
 };
 
 #endif //GOMOKU_MYMULTISET_HPP
