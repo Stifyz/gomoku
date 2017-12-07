@@ -1,4 +1,4 @@
-CMakeFiles
+CMakeFiles/*
 CMakeCache.txt
 CMakeScripts
 Testing
@@ -9,4 +9,4 @@ compile_commands.json
 CTestTestfile.cmake
 *.o
 .idea
-cmake-build-debug
+cmake-build-debug/*
