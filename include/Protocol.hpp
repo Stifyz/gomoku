@@ -99,23 +99,23 @@ private:
     std::map<const Action, Protocol::MethodPointer> m_func;
     void send(const Action action, const std::string &str);
 
-    void start(const std::string &cmmd);
-    void ok(const std::string &cmmd);
-    void turn(const std::string &cmmd);
-    void begin(const std::string &cmmd);
-    void board(const std::string &cmmd);
-    void info(const std::string &cmmd);
-    void end(const std::string &cmmd);
-    void about(const std::string &cmmd);
-    void recStart(const std::string &cmmd);
-    void reStart(const std::string &cmmd);
-    void takeBack(const std::string &cmmd);
-    void play(const std::string &cmmd);
-    void unknown(const std::string &cmmd);
-    void error(const std::string &cmmd);
-    void message(const std::string &cmmd);
-    void debug(const std::string &cmmd);
-    void suggest(const std::string &cmmd);
+    void start(const std::string &arg);
+    void ok(const std::string &arg);
+    void turn(const std::string &arg);
+    void begin(const std::string &arg);
+    void board(const std::string &arg);
+    void info(const std::string &arg);
+    void end(const std::string &arg);
+    void about(const std::string &arg);
+    void recStart(const std::string &arg);
+    void reStart(const std::string &arg);
+    void takeBack(const std::string &arg);
+    void play(const std::string &arg);
+    void unknown(const std::string &arg);
+    void error(const std::string &arg);
+    void message(const std::string &arg);
+    void debug(const std::string &arg);
+    void suggest(const std::string &arg);
 };
 
 #endif //GOMOKU_PROTOCOL_HPP

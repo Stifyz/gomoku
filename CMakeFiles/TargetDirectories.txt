@@ -1,3 +1,0 @@
-C:/Users/53915/Documents/gomoku/CMakeFiles/pbrain-GroMoCrew.dir
-C:/Users/53915/Documents/gomoku/CMakeFiles/edit_cache.dir
-C:/Users/53915/Documents/gomoku/CMakeFiles/rebuild_cache.dir

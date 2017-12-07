@@ -63,7 +63,7 @@ void Protocol::processInput(const std::string &line) {
     }
     m_lastAction = m_action.at(cmmd);
     MethodPointer func = m_func.at(m_action.at(cmmd));
-    std::cout << "HERE" << std::endl;
+    std::cout << "processInput" << std::endl;
     (this->*func)(arg);
 }
 
@@ -75,6 +75,7 @@ void Protocol::processOutput(const AIReturn &aiRes) {
 }
 
 void Protocol::processOutput(const unsigned int x, const unsigned int y) {
+    std::cout << "processOutput" << std::endl;
     Game::Pos pos(x, y);
     Game::GameSetter::boardSet(*m_game, pos, OWN_STONE);
     send(Action::NONE, std::to_string(x) + ',' + std::to_string(y));

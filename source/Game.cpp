@@ -3,6 +3,7 @@
 //
 
 #include <utility>
+#include <iostream>
 
 #include "Game.hpp"
 
@@ -109,6 +110,27 @@ bool Game::isEmptyBoard() const {
 
 const Game::Pos &Game::lastPlay() const {
     return m_lastPlay;
+}
+
+const void Game::printMap() const {
+    for (size_t y = 0; y < m_board.size(); y++)
+        for (size_t x = 0; x < m_board[y].size(); x++) {
+            switch (m_board[y][x]) {
+                case EMPTY_CASE :
+                std::cout << 'o';
+                    break;
+                case OWN_STONE :
+                std::cout << 'x';
+                    break;
+                case OPPONENT_STONE :
+                std::cout << '*';
+                    break;
+                default:
+                std::cout << '0';
+                    break;
+            }
+            std::cout << std::endl;
+        }
 }
 
 // Private Setters

@@ -84,6 +84,7 @@ public:
 
     const Pos &lastPlay() const;
 
+    const void printMap() const;
 private:
     bool m_isMyTurn = false;
     bool m_isSquare = true;
