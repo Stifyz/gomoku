@@ -12,9 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85331298-e1b1-48ee-b899-30cc2baf6b8c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/include/MyMultiset.hpp" afterPath="$PROJECT_DIR$/include/MyMultiset.hpp" />
       <change beforePath="$PROJECT_DIR$/pbrain-GroMoCrew.exe" afterPath="$PROJECT_DIR$/pbrain-GroMoCrew.exe" />
+      <change beforePath="$PROJECT_DIR$/source/AI.cpp" afterPath="$PROJECT_DIR$/source/AI.cpp" />
+      <change beforePath="$PROJECT_DIR$/source/Game.cpp" afterPath="$PROJECT_DIR$/source/Game.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +30,8 @@
       <file leaf-file-name="Brain.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/Brain.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+            <state relative-caret-position="273">
+              <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
               <folding>
                 <element signature="e#42#61#0" expanded="true" />
               </folding>
@@ -52,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/Game.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="187" column="11" lean-forward="false" selection-start-line="187" selection-start-column="11" selection-end-line="187" selection-end-column="11" />
+            <state relative-caret-position="294">
+              <caret line="187" column="5" lean-forward="false" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
               <folding>
                 <element signature="e#106#212#0" expanded="false" />
                 <element signature="e#214#287#0" expanded="false" />
@@ -81,9 +81,9 @@
                 <element signature="e#2921#3066#0" expanded="false" />
                 <element signature="e#3068#3274#0" expanded="false" />
                 <element signature="e#3276#3461#0" expanded="false" />
-                <element signature="e#4873#4926#0" expanded="false" />
-                <element signature="e#4928#5456#0" expanded="false" />
-                <element signature="e#5458#6514#0" expanded="false" />
+                <element signature="e#4875#4928#0" expanded="false" />
+                <element signature="e#4930#5458#0" expanded="false" />
+                <element signature="e#5460#6516#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -105,8 +105,8 @@
       <file leaf-file-name="AI.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/AI.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+            <state relative-caret-position="0">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="e#42#59#0" expanded="true" />
               </folding>
@@ -117,16 +117,13 @@
       <file leaf-file-name="Protocol.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/Protocol.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="169" column="45" lean-forward="false" selection-start-line="169" selection-start-column="45" selection-end-line="169" selection-end-column="45" />
+            <state relative-caret-position="41">
+              <caret line="79" column="73" lean-forward="false" selection-start-line="79" selection-start-column="73" selection-end-line="79" selection-end-column="73" />
               <folding>
                 <element signature="e#175#1244#0" expanded="false" />
                 <element signature="e#1246#1259#0" expanded="false" />
                 <element signature="e#2025#2673#0" expanded="false" />
                 <element signature="e#2675#3026#0" expanded="false" />
-                <element signature="e#3028#3456#0" expanded="false" />
-                <element signature="e#3458#3560#0" expanded="false" />
-                <element signature="e#3562#4072#0" expanded="false" />
                 <element signature="e#4074#4690#0" expanded="false" />
                 <element signature="e#4692#4818#0" expanded="false" />
                 <element signature="e#4820#5752#0" expanded="false" />
@@ -162,7 +159,7 @@
       <file leaf-file-name="AI.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/AI.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
+            <state relative-caret-position="168">
               <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
               <folding>
                 <element signature="e#87#110#0" expanded="true" />
@@ -171,11 +168,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyMultiset.hpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MyMultiset.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/MyMultiset.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+            <state relative-caret-position="355">
+              <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
               <folding>
                 <element signature="e#103#122#0" expanded="true" />
                 <element signature="e#166#184#0" expanded="true" />
@@ -209,10 +206,10 @@
         <option value="$PROJECT_DIR$/include/Protocol.hpp" />
         <option value="$PROJECT_DIR$/include/AI.hpp" />
         <option value="$PROJECT_DIR$/include/Game.hpp" />
-        <option value="$PROJECT_DIR$/source/Game.cpp" />
-        <option value="$PROJECT_DIR$/source/AI.cpp" />
         <option value="$PROJECT_DIR$/source/Protocol.cpp" />
         <option value="$PROJECT_DIR$/include/MyMultiset.hpp" />
+        <option value="$PROJECT_DIR$/source/AI.cpp" />
+        <option value="$PROJECT_DIR$/source/Game.cpp" />
       </list>
     </option>
   </component>
@@ -268,6 +265,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="printMap&#9;null&#9;null" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -311,12 +309,12 @@
       <workItem from="1512640893446" duration="295000" />
       <workItem from="1512641383324" duration="910000" />
       <workItem from="1512642399800" duration="16244000" />
-      <workItem from="1512723153425" duration="10088000" />
+      <workItem from="1512723153425" duration="11112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28392000" />
+    <option name="totallyTimeSpent" value="29416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -442,9 +440,9 @@
             <element signature="e#2921#3066#0" expanded="false" />
             <element signature="e#3068#3274#0" expanded="false" />
             <element signature="e#3276#3461#0" expanded="false" />
-            <element signature="e#4873#4926#0" expanded="false" />
-            <element signature="e#4928#5456#0" expanded="false" />
-            <element signature="e#5458#6514#0" expanded="false" />
+            <element signature="e#4875#4928#0" expanded="false" />
+            <element signature="e#4930#5458#0" expanded="false" />
+            <element signature="e#5460#6516#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -458,9 +456,6 @@
             <element signature="e#1246#1259#0" expanded="false" />
             <element signature="e#2025#2673#0" expanded="false" />
             <element signature="e#2675#3026#0" expanded="false" />
-            <element signature="e#3028#3456#0" expanded="false" />
-            <element signature="e#3458#3560#0" expanded="false" />
-            <element signature="e#3562#4072#0" expanded="false" />
             <element signature="e#4074#4690#0" expanded="false" />
             <element signature="e#4692#4818#0" expanded="false" />
             <element signature="e#4820#5752#0" expanded="false" />
@@ -559,9 +554,9 @@
             <element signature="e#2921#3066#0" expanded="false" />
             <element signature="e#3068#3274#0" expanded="false" />
             <element signature="e#3276#3461#0" expanded="false" />
-            <element signature="e#4873#4926#0" expanded="false" />
-            <element signature="e#4928#5456#0" expanded="false" />
-            <element signature="e#5458#6514#0" expanded="false" />
+            <element signature="e#4875#4928#0" expanded="false" />
+            <element signature="e#4930#5458#0" expanded="false" />
+            <element signature="e#5460#6516#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -575,9 +570,6 @@
             <element signature="e#1246#1259#0" expanded="false" />
             <element signature="e#2025#2673#0" expanded="false" />
             <element signature="e#2675#3026#0" expanded="false" />
-            <element signature="e#3028#3456#0" expanded="false" />
-            <element signature="e#3458#3560#0" expanded="false" />
-            <element signature="e#3562#4072#0" expanded="false" />
             <element signature="e#4074#4690#0" expanded="false" />
             <element signature="e#4692#4818#0" expanded="false" />
             <element signature="e#4820#5752#0" expanded="false" />
@@ -652,9 +644,9 @@
             <element signature="e#2921#3066#0" expanded="false" />
             <element signature="e#3068#3274#0" expanded="false" />
             <element signature="e#3276#3461#0" expanded="false" />
-            <element signature="e#4873#4926#0" expanded="false" />
-            <element signature="e#4928#5456#0" expanded="false" />
-            <element signature="e#5458#6514#0" expanded="false" />
+            <element signature="e#4875#4928#0" expanded="false" />
+            <element signature="e#4930#5458#0" expanded="false" />
+            <element signature="e#5460#6516#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -668,9 +660,6 @@
             <element signature="e#1246#1259#0" expanded="false" />
             <element signature="e#2025#2673#0" expanded="false" />
             <element signature="e#2675#3026#0" expanded="false" />
-            <element signature="e#3028#3456#0" expanded="false" />
-            <element signature="e#3458#3560#0" expanded="false" />
-            <element signature="e#3562#4072#0" expanded="false" />
             <element signature="e#4074#4690#0" expanded="false" />
             <element signature="e#4692#4818#0" expanded="false" />
             <element signature="e#4820#5752#0" expanded="false" />
@@ -748,9 +737,9 @@
             <element signature="e#2921#3066#0" expanded="false" />
             <element signature="e#3068#3274#0" expanded="false" />
             <element signature="e#3276#3461#0" expanded="false" />
-            <element signature="e#4873#4926#0" expanded="false" />
-            <element signature="e#4928#5456#0" expanded="false" />
-            <element signature="e#5458#6514#0" expanded="false" />
+            <element signature="e#4875#4928#0" expanded="false" />
+            <element signature="e#4930#5458#0" expanded="false" />
+            <element signature="e#5460#6516#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -764,9 +753,6 @@
             <element signature="e#1246#1259#0" expanded="false" />
             <element signature="e#2025#2673#0" expanded="false" />
             <element signature="e#2675#3026#0" expanded="false" />
-            <element signature="e#3028#3456#0" expanded="false" />
-            <element signature="e#3458#3560#0" expanded="false" />
-            <element signature="e#3562#4072#0" expanded="false" />
             <element signature="e#4074#4690#0" expanded="false" />
             <element signature="e#4692#4818#0" expanded="false" />
             <element signature="e#4820#5752#0" expanded="false" />
@@ -833,21 +819,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/AI.hpp">
+    <entry file="file://$PROJECT_DIR$/include/MyMultiset.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="355">
+          <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
           <folding>
-            <element signature="e#87#110#0" expanded="true" />
+            <element signature="e#103#122#0" expanded="true" />
+            <element signature="e#166#184#0" expanded="true" />
+            <element signature="e#485#654#0" expanded="false" />
+            <element signature="e#660#754#0" expanded="false" />
+            <element signature="e#760#982#0" expanded="false" />
+            <element signature="e#988#1073#0" expanded="false" />
+            <element signature="e#1079#1161#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,10 +846,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/Protocol.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="e#102#121#0" expanded="true" />
+            <element signature="e#342#655#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Brain.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding>
+            <element signature="e#42#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/AI.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding>
+            <element signature="e#87#110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Protocol.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="79" column="73" lean-forward="false" selection-start-line="79" selection-start-column="73" selection-end-line="79" selection-end-column="73" />
+          <folding>
+            <element signature="e#175#1244#0" expanded="false" />
+            <element signature="e#1246#1259#0" expanded="false" />
+            <element signature="e#2025#2673#0" expanded="false" />
+            <element signature="e#2675#3026#0" expanded="false" />
+            <element signature="e#4074#4690#0" expanded="false" />
+            <element signature="e#4692#4818#0" expanded="false" />
+            <element signature="e#4820#5752#0" expanded="false" />
+            <element signature="e#5754#6027#0" expanded="false" />
+            <element signature="e#6029#7943#0" expanded="false" />
+            <element signature="e#7945#8111#0" expanded="false" />
+            <element signature="e#8113#8226#0" expanded="false" />
+            <element signature="e#8228#8422#0" expanded="false" />
+            <element signature="e#8424#9554#0" expanded="false" />
+            <element signature="e#9556#9618#0" expanded="false" />
+            <element signature="e#9620#9683#0" expanded="false" />
+            <element signature="e#9685#9744#0" expanded="false" />
+            <element signature="e#9746#9808#0" expanded="false" />
+            <element signature="e#9810#9870#0" expanded="false" />
+            <element signature="e#9872#9934#0" expanded="false" />
+            <element signature="e#9936#9996#0" expanded="false" />
+            <element signature="e#9998#10060#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/AI.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/Game.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="187" column="11" lean-forward="false" selection-start-line="187" selection-start-column="11" selection-end-line="187" selection-end-column="11" />
+        <state relative-caret-position="294">
+          <caret line="187" column="5" lean-forward="false" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
           <folding>
             <element signature="e#106#212#0" expanded="false" />
             <element signature="e#214#287#0" expanded="false" />
@@ -890,89 +953,9 @@
             <element signature="e#2921#3066#0" expanded="false" />
             <element signature="e#3068#3274#0" expanded="false" />
             <element signature="e#3276#3461#0" expanded="false" />
-            <element signature="e#4873#4926#0" expanded="false" />
-            <element signature="e#4928#5456#0" expanded="false" />
-            <element signature="e#5458#6514#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/AI.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="40" column="21" lean-forward="false" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding>
-            <element signature="e#42#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/Brain.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-          <folding>
-            <element signature="e#42#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/Protocol.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-          <folding>
-            <element signature="e#102#121#0" expanded="true" />
-            <element signature="e#342#655#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/Protocol.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="169" column="45" lean-forward="false" selection-start-line="169" selection-start-column="45" selection-end-line="169" selection-end-column="45" />
-          <folding>
-            <element signature="e#175#1244#0" expanded="false" />
-            <element signature="e#1246#1259#0" expanded="false" />
-            <element signature="e#2025#2673#0" expanded="false" />
-            <element signature="e#2675#3026#0" expanded="false" />
-            <element signature="e#3028#3456#0" expanded="false" />
-            <element signature="e#3458#3560#0" expanded="false" />
-            <element signature="e#3562#4072#0" expanded="false" />
-            <element signature="e#4074#4690#0" expanded="false" />
-            <element signature="e#4692#4818#0" expanded="false" />
-            <element signature="e#4820#5752#0" expanded="false" />
-            <element signature="e#5754#6027#0" expanded="false" />
-            <element signature="e#6029#7943#0" expanded="false" />
-            <element signature="e#7945#8111#0" expanded="false" />
-            <element signature="e#8113#8226#0" expanded="false" />
-            <element signature="e#8228#8422#0" expanded="false" />
-            <element signature="e#8424#9554#0" expanded="false" />
-            <element signature="e#9556#9618#0" expanded="false" />
-            <element signature="e#9620#9683#0" expanded="false" />
-            <element signature="e#9685#9744#0" expanded="false" />
-            <element signature="e#9746#9808#0" expanded="false" />
-            <element signature="e#9810#9870#0" expanded="false" />
-            <element signature="e#9872#9934#0" expanded="false" />
-            <element signature="e#9936#9996#0" expanded="false" />
-            <element signature="e#9998#10060#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/MyMultiset.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-          <folding>
-            <element signature="e#103#122#0" expanded="true" />
-            <element signature="e#166#184#0" expanded="true" />
-            <element signature="e#485#654#0" expanded="false" />
-            <element signature="e#660#754#0" expanded="false" />
-            <element signature="e#760#982#0" expanded="false" />
-            <element signature="e#988#1073#0" expanded="false" />
-            <element signature="e#1079#1161#0" expanded="false" />
+            <element signature="e#4875#4928#0" expanded="false" />
+            <element signature="e#4930#5458#0" expanded="false" />
+            <element signature="e#5460#6516#0" expanded="false" />
           </folding>
         </state>
       </provider>

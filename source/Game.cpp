@@ -185,7 +185,7 @@ bool Game::boardSet(const Pos &pos, const int value) {
     if (boardGet(pos.x + 1, pos.y + 1) == EMPTY_CASE)
         m_playablePos.emplace_back(Game::Pos(pos.x + 1, pos.y + 1));
     m_playablePos.unique();
-    printMap();
+    //printMap();
     return true;
 }
 

@@ -38,7 +38,7 @@ Protocol::AIReturn AI::think(int timeOutMillisecond) {
     /*std::cout << "Pos x : " << ret.pos.x << std::endl;
     std::cout << "Pos y : " << ret.pos.y << std::endl;*/
     m_lastPos = ret.pos;
-    m_moveAi.print();
+    //m_moveAi.print();
     m_moveAi.removeAll();
     return ret;
 }
