@@ -40,7 +40,7 @@ public :
     }
 
     const Game::Pos &getLast() const {
-        return (m_multiset.end()->first);
+        return ((--m_multiset.end())->first);
     }
 
     void removeAll() {

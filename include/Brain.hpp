@@ -23,8 +23,8 @@ public:
         return str;
     }
 private:
-    Protocol m_protocol;
     std::shared_ptr<Game> m_game;
+    Protocol m_protocol;
     // std::future<std::string> m_receive;
     AI m_ai;
 };

@@ -33,13 +33,15 @@ Protocol::AIReturn AI::think(int timeOutMillisecond) {
         m_moveAi.addInList(*it, tmpWeight);
     }
     ret.isPos = true;
-    ret.pos = m_moveAi.getFirst();
-    //m_moveAi.erase(ret.pos);
-    /*std::cout << "Pos x : " << ret.pos.x << std::endl;
-    std::cout << "Pos y : " << ret.pos.y << std::endl;*/
-    m_lastPos = ret.pos;
-    //m_moveAi.print();
+    if (m_isCritical)
+        ret.pos = m_moveAi.getFirst();
+    else
+        ret.pos = m_moveAi.getLast();
     m_moveAi.removeAll();
+    if (m_game->isEmptyBoard()) {
+        ret.pos.x = (m_game->height() / 2);
+        ret.pos.y = (m_game->width() / 2);
+    }
     return ret;
 }
 
@@ -65,6 +67,8 @@ int	AI::check_diagNE(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.y + i) <= m_game->height() && (pos.x + i) <= m_game->width() && m_game->boardGet(pos.x + i, pos.y + i) == OWN_STONE && i <= 4) {
         val--;
@@ -85,6 +89,8 @@ int	AI::check_diagNW(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.y + i) <= m_game->height() && (pos.x - i) >= 0 && m_game->boardGet(pos.x - i, pos.y + i) == OWN_STONE && i <= 4) {
         val--;
@@ -105,6 +111,8 @@ int	AI::check_diagSE(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.y - i) >= 0 && (pos.x + i) <= m_game->width() && m_game->boardGet(pos.x + i, pos.y - i) == OWN_STONE && i <= 4) {
         val--;
@@ -125,6 +133,8 @@ int	AI::check_diagSW(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.y - i) >= 0 && (pos.x - i) >= 0 && m_game->boardGet(pos.x - i, pos.y - i) == OWN_STONE && i <= 4) {
         val--;
@@ -145,6 +155,8 @@ int	AI::check_vert(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.y + i) <= m_game->height() && m_game->boardGet(pos.x, pos.y + i) == OWN_STONE && i <= 4) {
         val--;
@@ -166,6 +178,8 @@ int	AI::check_vertReverse(const Game::Pos &pos) {
         i++;
     }
     i = 1;
+    if (val >= 3)
+        m_isCritical = true;
     while ((pos.y - i) >= 0 && m_game->boardGet(pos.x, pos.y - i) == OWN_STONE && i <= 4) {
         val--;
         i++;
@@ -185,6 +199,8 @@ int	AI::check_horiReverse(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.x - i) >= 0 && m_game->boardGet(pos.x - i, pos.y) == OWN_STONE && i <= 4) {
         val--;
@@ -205,6 +221,8 @@ int	AI::check_hori(const Game::Pos &pos) {
         val++;
         i++;
     }
+    if (val >= 3)
+        m_isCritical = true;
     i = 1;
     while ((pos.x + i) <= m_game->width() && m_game->boardGet(pos.x + i, pos.y) == OWN_STONE && i <= 4) {
         val--;

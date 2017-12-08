@@ -93,16 +93,10 @@ void Protocol::processOutput(const Action action, const std::string &mssg) {
 
 // Private Methods
 void Protocol::send(const Action action, const std::string &str) {
-    if (action == Action::NONE || str == "") {
+    if (action == Action::NONE || str == "")
         std::cout << m_actionToString.at(action) << str << '\r' << std::endl;
-        //printf("%s %s", m_actionToString.at(action).c_str(), str.c_str());
-        //fflush(stdout);
-    }
-    else {
-        //printf("%s", m_actionToString.at(action).c_str());
-        //fflush(stdout);
+    else
         std::cout << m_actionToString.at(action) << " " << str << '\r' << std::endl;
-    }
 }
 
 void Protocol::start(const std::string &arg) {

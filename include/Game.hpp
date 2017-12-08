@@ -53,7 +53,7 @@ public:
         inline static void width(Game &game, const unsigned int width) { game.height(width); }
 
         inline static void addInfo(Game &game, const std::string &key, const std::string &value) { game.addInfo(key, value); }
-        inline static bool boardSet(Game &game, const Game::Pos &pos, const int value) { game.boardSet(pos, value); }
+        inline static bool boardSet(Game &game, const Game::Pos &pos, const int value) { return game.boardSet(pos, value); }
         inline static void changeTurn(Game &game, bool b) { game.changeTurn(b); }
     };
 
@@ -79,9 +79,9 @@ public:
     bool isPlayable(std::list<Pos> &filledList, Pos pos);
     bool isAdjacentTo(Pos pos1, Pos pos2) const;
 
-    int size() const;
-    int height() const;
-    int width() const;
+    unsigned int size() const;
+    unsigned int height() const;
+    unsigned int width() const;
     bool isSquare() const;
     bool isEmptyBoard() const;
     bool isMyTurn() const;
@@ -93,8 +93,8 @@ public:
 private:
     bool m_isMyTurn = false;
     bool m_isSquare = true;
-    int m_boardHeight = 0;
-    int m_boardWidth = 0;
+    unsigned int m_boardHeight = 0;
+    unsigned int m_boardWidth = 0;
     bool m_isEmptyBoard = true;
     Pos m_lastPlay;
 

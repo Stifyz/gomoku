@@ -76,18 +76,18 @@ bool Game::isAdjacentTo(Pos pos1, Pos pos2) const {
     return (abs(pos1.x - pos2.y) + abs(pos1.y - pos2.x)) < 3;
 }
 
-int Game::size() const {
+unsigned int Game::size() const {
     if (m_isSquare)
         return m_boardHeight;
     else
         return -1;
 }
 
-int Game::height() const {
+unsigned int Game::height() const {
     return m_boardHeight;
 }
 
-int Game::width() const {
+unsigned int Game::width() const {
     return m_boardWidth;
 }
 
