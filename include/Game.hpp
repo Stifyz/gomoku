@@ -37,6 +37,12 @@ public:
         }
         unsigned int x;
         unsigned int y;
+        friend std::ostream &operator<<(std::ostream &stream, const Pos &pos) {
+            stream << std::to_string(pos.x);
+            stream << std::string(" ");
+            stream << std::to_string(pos.y);
+            return stream;
+        }
     };
 
     // Only usable by Protocol

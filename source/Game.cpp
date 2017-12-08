@@ -108,24 +108,25 @@ const Game::Pos &Game::lastPlay() const {
 }
 
 const void Game::printMap() const {
-    for (size_t y = 0; y < m_board.size(); y++)
+    for (size_t y = 0; y < m_board.size(); y++) {
         for (size_t x = 0; x < m_board[y].size(); x++) {
             switch (m_board[y][x]) {
                 case EMPTY_CASE :
-                std::cout << 'o';
+                    std::cerr << 'o';
                     break;
                 case OWN_STONE :
-                std::cout << 'x';
+                    std::cerr << 'x';
                     break;
                 case OPPONENT_STONE :
-                std::cout << '*';
+                    std::cerr << '*';
                     break;
                 default:
-                std::cout << '0';
+                    std::cerr << '0';
                     break;
             }
-            std::cout << std::endl;
         }
+        std::cerr << std::endl;
+    }
 }
 
 // Private Setters
@@ -160,9 +161,9 @@ void Game::width(const int width) {
 bool Game::boardSet(const Pos &pos, const int value) {
     if (pos.x >= m_boardWidth || pos.y >= m_boardHeight || value < 0)
         return false;
+    swapList(pos, value);
     m_board[pos.y][pos.x] = value;
     m_isEmptyBoard = false;
-    swapList(pos, value);
     m_lastPlay = pos;
     for (auto it = m_playablePos.begin(); it != m_playablePos.end(); it++)
         if (*it == pos)
@@ -184,6 +185,7 @@ bool Game::boardSet(const Pos &pos, const int value) {
     if (boardGet(pos.x + 1, pos.y + 1) == EMPTY_CASE)
         m_playablePos.emplace_back(Game::Pos(pos.x + 1, pos.y + 1));
     m_playablePos.unique();
+    printMap();
     return true;
 }
 

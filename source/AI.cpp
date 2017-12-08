@@ -5,19 +5,22 @@
 #include <random>
 #include <iostream>
 #include "AI.hpp"
-// Function extern
+
+// Extern function
 
 bool	mySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2) {
-    return (x.second < x2.second);
+    return (x.second > x2.second);
 }
+
+// !Extern functions
 
 AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(std::multiset<std::pair<Game::Pos, int>, bool (*)(std::pair<Game::Pos, int>, std::pair<Game::Pos, int>)>(&mySort)) {}
 
-const Protocol::AIReturn &AI::think() {
+Protocol::AIReturn AI::think() {
     return think(0);
 }
 
-const Protocol::AIReturn &AI::think(int timeOutMillisecond) {
+Protocol::AIReturn AI::think(int timeOutMillisecond) {
     (void)timeOutMillisecond;
     Protocol::AIReturn ret;
     std::list<Game::Pos> tmpList;
@@ -31,11 +34,12 @@ const Protocol::AIReturn &AI::think(int timeOutMillisecond) {
     }
     ret.isPos = true;
     ret.pos = m_moveAi.getFirst();
-    m_moveAi.erase(ret.pos)
+    //m_moveAi.erase(ret.pos);
     /*std::cout << "Pos x : " << ret.pos.x << std::endl;
     std::cout << "Pos y : " << ret.pos.y << std::endl;*/
-    m_lastPos.x = ret.pos.x;
-    m_lastPos.y = ret.pos.y;
+    m_lastPos = ret.pos;
+    m_moveAi.print();
+    m_moveAi.removeAll();
     return ret;
 }
 

@@ -5,6 +5,7 @@
 #ifndef GOMOKU_MYMULTISET_HPP
 #define GOMOKU_MYMULTISET_HPP
 
+#include <iostream>
 #include <set>
 #include <utility>
 
@@ -27,7 +28,7 @@ public :
 
     void erase(T key) {
         for (auto it = m_multiset.begin(); it != m_multiset.end(); it++) {
-            if (it->first == key) {
+            if (key == it->first) {
                 m_multiset.erase(it);
                 break ;
             }
@@ -36,6 +37,16 @@ public :
 
     Game::Pos getFirst() {
         return (m_multiset.begin())->first;
+    }
+
+    void removeAll() {
+        while (!m_multiset.empty())
+            m_multiset.erase(*m_multiset.begin());
+    }
+
+    void print() {
+        for (auto it = m_multiset.begin(); it != m_multiset.end(); it++)
+            std::cerr << it->first << " -> " << it->second << std::endl;
     }
 private:
     std::multiset<std::pair<T, U>, compareFunc> m_multiset;

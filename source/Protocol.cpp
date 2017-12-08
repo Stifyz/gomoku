@@ -84,6 +84,7 @@ void Protocol::processOutput(const unsigned int x, const unsigned int y) {
     Game::Pos pos(x, y);
     Game::GameSetter::boardSet(*m_game, pos, OWN_STONE);
     send(Action::NONE, std::to_string(x) + ',' + std::to_string(y));
+    Game::GameSetter::changeTurn(*m_game, NOT_MY_TURN);
 }
 
 void Protocol::processOutput(const Action action, const std::string &mssg) {
@@ -143,7 +144,7 @@ void Protocol::turn(const std::string &arg) {
         return ;
     }
     try {
-        pos.y = std::stoi(arg.substr(0, arg.find_first_of(',')));
+        pos.y = std::stoi(arg.substr(arg.find_first_of(',') + 1));
     } catch (std::invalid_argument &e) {
         send(Action::ERROR, "The argument y isn't valid number");
         return ;
@@ -154,6 +155,7 @@ void Protocol::turn(const std::string &arg) {
     if (!Game::GameSetter::boardSet(*m_game, pos, OPPONENT_STONE))
         send(Action::ERROR, "The given case is out of the board");
     m_lastAction = Action::TURN;
+    Game::GameSetter::changeTurn(*m_game, MY_TURN);
 }
 
 void Protocol::begin(const std::string &arg) {
