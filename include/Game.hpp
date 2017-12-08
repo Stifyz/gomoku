@@ -18,7 +18,6 @@
 #define OPPONENT_STONE 2
 #define OTHER_STONE 3
 
-
 class Game {
 public:
     struct Pos {

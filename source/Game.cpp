@@ -62,16 +62,7 @@ const std::list<Game::Pos> &Game::getAllUnknownPos() const {
 }
 
 const std::list<Game::Pos> &Game::getAllPlayablePos() {
-    auto emptyList = getAllEmptyPos();
-    std::list<Pos> filledList(getAllMyPos());
-    filledList.merge(std::list<Pos>(getAllOpponentPos()));
-    filledList.merge(std::list<Pos>(getAllUnknownPos()));
-    std::list<Pos> playablePos;
-    for (auto it = emptyList.begin(); it != emptyList.end(); it++) {
-        if (isPlayable(filledList, *it))
-            playablePos.emplace_back(*it);
-    }
-    return m_playablePos = playablePos;
+    return m_playablePos;
 }
 
 bool Game::isPlayable(std::list<Game::Pos> &filledList, const Pos pos) {
@@ -108,7 +99,9 @@ bool Game::isEmptyBoard() const {
     return m_isEmptyBoard;
 }
 
-bool Game::isMyTurn() const { return m_isMyTurn; }
+bool Game::isMyTurn() const {
+    return m_isMyTurn;
+}
 
 const Game::Pos &Game::lastPlay() const {
     return m_lastPlay;
@@ -171,6 +164,26 @@ bool Game::boardSet(const Pos &pos, const int value) {
     m_isEmptyBoard = false;
     swapList(pos, value);
     m_lastPlay = pos;
+    for (auto it = m_playablePos.begin(); it != m_playablePos.end(); it++)
+        if (*it == pos)
+            m_playablePos.erase(it);
+    if (boardGet(pos.x - 1, pos.y - 1) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x - 1, pos.y - 1));
+    if (boardGet(pos.x, pos.y - 1) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x, pos.y - 1));
+    if (boardGet(pos.x + 1, pos.y - 1) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x + 1, pos.y - 1));
+    if (boardGet(pos.x - 1, pos.y) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x - 1, pos.y));
+    if (boardGet(pos.x + 1, pos.y) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x + 1, pos.y));
+    if (boardGet(pos.x - 1, pos.y + 1) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x - 1, pos.y + 1));
+    if (boardGet(pos.x, pos.y + 1) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x, pos.y + 1));
+    if (boardGet(pos.x + 1, pos.y + 1) == EMPTY_CASE)
+        m_playablePos.emplace_back(Game::Pos(pos.x + 1, pos.y + 1));
+    m_playablePos.unique();
     return true;
 }
 
@@ -211,6 +224,15 @@ void Game::fillLists() {
                     break ;
             }
         }
+    /*auto emptyList = getAllEmptyPos();
+    std::list<Pos> filledList(getAllMyPos());
+    filledList.merge(std::list<Pos>(getAllOpponentPos()));
+    filledList.merge(std::list<Pos>(getAllUnknownPos()));
+    std::list<Pos> m_playablePos;
+    for (auto it = emptyList.begin(); it != emptyList.end(); it++) {
+        if (isPlayable(filledList, *it))
+            m_playablePos.emplace_back(*it);
+    }*/
 }
 
 void Game::swapList(const Pos &pos, const int newValue) {

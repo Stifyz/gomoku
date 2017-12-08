@@ -13,11 +13,11 @@ bool	mySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2) {
 
 AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(std::multiset<std::pair<Game::Pos, int>, bool (*)(std::pair<Game::Pos, int>, std::pair<Game::Pos, int>)>(&mySort)) {}
 
-const Game::Pos &AI::think() {
+const Protocol::AIReturn &AI::think() {
     return think(0);
 }
 
-const Game::Pos &AI::think(int timeOutMillisecond) {
+const Protocol::AIReturn &AI::think(int timeOutMillisecond) {
     (void)timeOutMillisecond;
     Protocol::AIReturn ret;
     std::list<Game::Pos> tmpList;
@@ -29,12 +29,14 @@ const Game::Pos &AI::think(int timeOutMillisecond) {
         tmpWeight = evalPos(*it);
         m_moveAi.addInList(*it, tmpWeight);
     }
+    ret.isPos = true;
     ret.pos = m_moveAi.getFirst();
+    m_moveAi.erase(ret.pos)
     /*std::cout << "Pos x : " << ret.pos.x << std::endl;
     std::cout << "Pos y : " << ret.pos.y << std::endl;*/
     m_lastPos.x = ret.pos.x;
     m_lastPos.y = ret.pos.y;
-    return m_lastPos;
+    return ret;
 }
 
 // Private Functions

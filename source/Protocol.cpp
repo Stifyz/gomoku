@@ -67,14 +67,14 @@ void Protocol::processInput(const std::string &line) {
     (this->*func)(arg);
 }
 
-void Protocol::processOutput(const Game::Pos &aiRes) {
+void Protocol::processOutput(const Protocol::AIReturn &aiRes) {
     /*std::cout << "1processoutput" << std::endl;
     std::cout << "pos x : " << aiRes.x << std::endl;
     std::cout << "pos y : " << aiRes.y << std::endl;*/
-    //if (aiRes.x && aiRes.y)
-        processOutput(aiRes.x, aiRes.y);
-    /*else
-        processOutput(aiRes.action, aiRes.mssg);*/
+    if (aiRes.isPos)
+        processOutput(aiRes.pos.x, aiRes.pos.y);
+    else
+        processOutput(aiRes.action, aiRes.mssg);
 }
 
 void Protocol::processOutput(const unsigned int x, const unsigned int y) {

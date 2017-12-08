@@ -15,8 +15,8 @@ public:
     AI(const std::shared_ptr<Game> &game);
 
     //Protocol::AIReturn think();
-    const Game::Pos &think();
-    const Game::Pos &think(int timeOutMillisecond);
+    const Protocol::AIReturn &think();
+    const Protocol::AIReturn &think(int timeOutMillisecond);
 private:
     const std::shared_ptr<Game> m_game;
     MyMultiset<Game::Pos, int>	m_moveAi;
