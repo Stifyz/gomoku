@@ -35,8 +35,12 @@ public :
         }
     }
 
-    Game::Pos getFirst() {
+    const Game::Pos &getFirst() const {
         return (m_multiset.begin())->first;
+    }
+
+    const Game::Pos &getLast() const {
+        return (m_multiset.end()->first);
     }
 
     void removeAll() {
