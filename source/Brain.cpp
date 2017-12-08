@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Brain.hpp"
 
-Brain::Brain(const std::shared_ptr <Game> game) : m_protocol(game), m_ai(game) {
+Brain::Brain(const std::shared_ptr <Game> game) : m_game(game), m_protocol(game), m_ai(game) {
     // m_receive = std::async(std::launch::async, getInput);
 }
 
@@ -14,15 +14,15 @@ void Brain::run() {
     Application &app = Application::getInstance();
     while (!app.isRunning() && b) {
         std::string receive = getMyInput();
-        std::cout << receive << std::endl;
+        //std::cout << receive << std::endl;
         m_protocol.processInput(receive);
         while (app.isRunning()) {
-            std::cout << "enter loop" << std::endl;
             b = false;
-            m_protocol.processOutput(m_ai.think());
+            if (m_game->isMyTurn())
+                m_protocol.processOutput(m_ai.think());
             // TODO: Resolv problem with std::future for multithreading getInput
             std::string receive = getMyInput();
-            std::cout << receive << std::endl;
+            //std::cout << receive << std::endl;
             m_protocol.processInput(receive);
         }
     }

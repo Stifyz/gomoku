@@ -63,20 +63,24 @@ void Protocol::processInput(const std::string &line) {
     }
     m_lastAction = m_action.at(cmmd);
     MethodPointer func = m_func.at(m_action.at(cmmd));
-    std::cout << "processInput" << std::endl;
+    //std::cout << "processInput" << std::endl;
     (this->*func)(arg);
 }
 
-void Protocol::processOutput(const AIReturn &aiRes) {
-    std::cout << "1processoutput" << std::endl;
-    if (aiRes.isPos)
-        processOutput(aiRes.pos.x, aiRes.pos.y);
-    else
-        processOutput(aiRes.action, aiRes.mssg);
+void Protocol::processOutput(const Game::Pos &aiRes) {
+    /*std::cout << "1processoutput" << std::endl;
+    std::cout << "pos x : " << aiRes.x << std::endl;
+    std::cout << "pos y : " << aiRes.y << std::endl;*/
+    //if (aiRes.x && aiRes.y)
+        processOutput(aiRes.x, aiRes.y);
+    /*else
+        processOutput(aiRes.action, aiRes.mssg);*/
 }
 
 void Protocol::processOutput(const unsigned int x, const unsigned int y) {
-    std::cout << "processOutput" << std::endl;
+    /*std::cout << "processOutput" << std::endl;
+    std::cout << "pos x : " << x << std::endl;
+    std::cout << "pos y : " << y << std::endl;*/
     Game::Pos pos(x, y);
     Game::GameSetter::boardSet(*m_game, pos, OWN_STONE);
     send(Action::NONE, std::to_string(x) + ',' + std::to_string(y));
@@ -88,10 +92,16 @@ void Protocol::processOutput(const Action action, const std::string &mssg) {
 
 // Private Methods
 void Protocol::send(const Action action, const std::string &str) {
-    if (action == Action::NONE)
+    if (action == Action::NONE || str == "") {
         std::cout << m_actionToString.at(action) << str << '\r' << std::endl;
-    else
+        //printf("%s %s", m_actionToString.at(action).c_str(), str.c_str());
+        //fflush(stdout);
+    }
+    else {
+        //printf("%s", m_actionToString.at(action).c_str());
+        //fflush(stdout);
         std::cout << m_actionToString.at(action) << " " << str << '\r' << std::endl;
+    }
 }
 
 void Protocol::start(const std::string &arg) {
@@ -112,11 +122,12 @@ void Protocol::start(const std::string &arg) {
     }
     Game::GameSetter::size(*m_game, size);
     m_lastAction = Action::START;
-    ok(" - everything is good");
+    ok("");
     app.start();
 }
 
 void Protocol::ok(const std::string &arg) {
+    //send(Action::ERROR, "fuck you mother fucker!");
     send(Action::OK, arg);
 }
 
@@ -249,7 +260,7 @@ void Protocol::recStart(const std::string &arg) {
     }
     Game::GameSetter::width(*m_game, width);
     Game::GameSetter::height(*m_game, height);
-    ok(" - parameters are good");
+    ok("");
     app.start();
 }
 

@@ -14,11 +14,13 @@ class AI {
 public:
     AI(const std::shared_ptr<Game> &game);
 
-    Protocol::AIReturn think();
-    Protocol::AIReturn think(int timeOutMillisecond);
+    //Protocol::AIReturn think();
+    const Game::Pos &think();
+    const Game::Pos &think(int timeOutMillisecond);
 private:
     const std::shared_ptr<Game> m_game;
     MyMultiset<Game::Pos, int>	m_moveAi;
+    Game::Pos                   m_lastPos;
 
     Game::Pos getRandomPos(const std::list<Game::Pos> &list);
 

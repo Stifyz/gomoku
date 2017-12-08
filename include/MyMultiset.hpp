@@ -27,8 +27,10 @@ public :
 
     void erase(T key) {
         for (auto it = m_multiset.begin(); it != m_multiset.end(); it++) {
-            if (it->first == key)
+            if (it->first == key) {
                 m_multiset.erase(it);
+                break ;
+            }
         }
     }
 

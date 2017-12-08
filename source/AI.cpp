@@ -3,6 +3,7 @@
 //
 
 #include <random>
+#include <iostream>
 #include "AI.hpp"
 // Function extern
 
@@ -12,30 +13,34 @@ bool	mySort(std::pair<Game::Pos, int> x, std::pair<Game::Pos, int> x2) {
 
 AI::AI(const std::shared_ptr<Game> &game) : m_game(game), m_moveAi(std::multiset<std::pair<Game::Pos, int>, bool (*)(std::pair<Game::Pos, int>, std::pair<Game::Pos, int>)>(&mySort)) {}
 
-Protocol::AIReturn AI::think() {
-    think(0);
+const Game::Pos &AI::think() {
+    return think(0);
 }
 
-Protocol::AIReturn AI::think(int timeOutMillisecond) {
+const Game::Pos &AI::think(int timeOutMillisecond) {
     (void)timeOutMillisecond;
     Protocol::AIReturn ret;
     std::list<Game::Pos> tmpList;
+    //ret.pos = getRandomPos(m_game->getAllEmptyPos());
     int	tmpWeight;
-    tmpList = m_game->getAllPlayablePos();
+    tmpList = m_game->getAllEmptyPos();
     ret.isPos = true;
-    ret.pos = getRandomPos(m_game->getAllPlayablePos());
     for (auto it = tmpList.begin(); it != tmpList.end(); it++) {
-      tmpWeight = evalPos(*it);
-      m_moveAi.addInList(*it, tmpWeight);
+        tmpWeight = evalPos(*it);
+        m_moveAi.addInList(*it, tmpWeight);
     }
     ret.pos = m_moveAi.getFirst();
-    //ret.pos = getRandomPos(m_game->getAllEmptyPos());
-    return ret;
+    /*std::cout << "Pos x : " << ret.pos.x << std::endl;
+    std::cout << "Pos y : " << ret.pos.y << std::endl;*/
+    m_lastPos.x = ret.pos.x;
+    m_lastPos.y = ret.pos.y;
+    return m_lastPos;
 }
 
 // Private Functions
 
 Game::Pos AI::getRandomPos(const std::list<Game::Pos> &list) {
+    //std::cout << "List size : " << list.size() << std::endl;
     int rando = rand() % list.size();
     auto it = list.begin();
     for (size_t i = 0; i < rando; i++, it++);

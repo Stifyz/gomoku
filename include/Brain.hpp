@@ -24,6 +24,7 @@ public:
     }
 private:
     Protocol m_protocol;
+    std::shared_ptr<Game> m_game;
     // std::future<std::string> m_receive;
     AI m_ai;
 };

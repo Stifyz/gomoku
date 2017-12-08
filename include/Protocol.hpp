@@ -49,7 +49,7 @@ public:
     };
 
     void processInput(const std::string &line);
-    void processOutput(const AIReturn &aiRes);
+    void processOutput(const Game::Pos &aiRes);
     void processOutput(const unsigned int x, const unsigned int y);
     void processOutput(const Action action, const std::string &mssg);
 

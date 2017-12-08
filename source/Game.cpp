@@ -108,6 +108,8 @@ bool Game::isEmptyBoard() const {
     return m_isEmptyBoard;
 }
 
+bool Game::isMyTurn() const { return m_isMyTurn; }
+
 const Game::Pos &Game::lastPlay() const {
     return m_lastPlay;
 }
@@ -140,6 +142,7 @@ void Game::size(const int size) {
     m_boardHeight = size;
     m_boardWidth = size;
     resizeBoard();
+    fillLists();
 }
 
 void Game::height(const int height) {
@@ -149,6 +152,7 @@ void Game::height(const int height) {
     else
         m_isSquare = true;
     resizeBoard();
+    fillLists();
 }
 
 void Game::width(const int width) {
