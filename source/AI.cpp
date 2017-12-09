@@ -63,24 +63,34 @@ int	AI::evalPos(const Game::Pos &pos) {
 
     eval1 = check_hori(pos);
     eval1 += check_horiReverse(pos);
-
+    if (m_isCritical) {
+        m_isCritical = false;
+        return eval1;
+    }
     eval2 = check_vert(pos);
     eval2 += check_vertReverse(pos);
-
+    if (m_isCritical) {
+        m_isCritical = false;
+        return eval2;
+    }
     if (eval1 > eval2)
         eval = eval1;
     else
         eval = eval2;
-
     eval3 = check_diagNE(pos);
     eval3 += check_diagSW(pos);
-
+    if (m_isCritical) {
+        m_isCritical = false;
+        return eval3;
+    }
     if (eval3 > eval)
         eval = eval3;
-
     eval4 = check_diagNW(pos);
     eval4 += check_diagSE(pos);
-
+    if (m_isCritical) {
+        m_isCritical = false;
+        return eval4;
+    }
     if (eval4 > eval)
         eval = eval4;
     return (eval);
@@ -91,8 +101,11 @@ int	AI::check_hori(const Game::Pos &pos) {
     int val = 0;
     int save;
     while ((pos.x - i) >= 0 && i <= 4 && m_game->boardGet(pos.x - i, pos.y) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x - i, pos.y) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x - i, pos.y) == OPPONENT_STONE) {
             val += 2 * i;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x - i, pos.y) == OWN_STONE) {
             val--;
             break;
@@ -102,8 +115,11 @@ int	AI::check_hori(const Game::Pos &pos) {
     save = i;
     i = 1;
     while ((pos.x + i) <= m_game->width() && i <= 4 && m_game->boardGet(pos.x + i, pos.y) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x + i, pos.y) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x + i, pos.y) == OPPONENT_STONE) {
             val += 2 * save;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x + i, pos.y) == OWN_STONE) {
             val--;
             break;
@@ -147,8 +163,11 @@ int	AI::check_vert(const Game::Pos &pos) {
     int val = 0;
     int save;
     while ((pos.y - i) >= 0 && i <= 4 && m_game->boardGet(pos.x, pos.y - i) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x, pos.y - i) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x, pos.y - i) == OPPONENT_STONE) {
             val += 2 * i;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x, pos.y - i) == OWN_STONE) {
             val--;
             break ;
@@ -158,8 +177,11 @@ int	AI::check_vert(const Game::Pos &pos) {
     save = i;
     i = 1;
     while ((pos.y + i) <= m_game->height() && i <= 4 && m_game->boardGet(pos.x, pos.y + i) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x, pos.y + i) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x, pos.y + i) == OPPONENT_STONE) {
             val += 2 * save;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x, pos.y + i) == OWN_STONE) {
             val--;
             break;
@@ -203,8 +225,11 @@ int	AI::check_diagNE(const Game::Pos &pos) {
     int val = 0;
     int save;
     while ((pos.x - i) >= 0 && (pos.y - i) >= 0 && i <= 4 && m_game->boardGet(pos.x - i, pos.y - i) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x - i, pos.y - i) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x - i, pos.y - i) == OPPONENT_STONE) {
             val += 2 * i;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x - i, pos.y - i) == OWN_STONE) {
             val--;
             break ;
@@ -214,8 +239,11 @@ int	AI::check_diagNE(const Game::Pos &pos) {
     save = i;
     i = 1;
     while ((pos.x + i) <= m_game->width() && (pos.y + i) <= m_game->height() && i <= 4 && m_game->boardGet(pos.x + i, pos.y + i) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x + i, pos.y + i) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x + i, pos.y + i) == OPPONENT_STONE) {
             val += 2 * save;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x + i, pos.y + i) == OWN_STONE) {
             val--;
             break;
@@ -259,8 +287,11 @@ int	AI::check_diagNW(const Game::Pos &pos) {
     int val = 0;
     int save;
     while ((pos.x - i) >= 0 && (pos.y + i) <= m_game->height() && i <= 4 && m_game->boardGet(pos.x - i, pos.y + i) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x - i, pos.y + i) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x - i, pos.y + i) == OPPONENT_STONE) {
             val += 2 * i;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x - i, pos.y + i) == OWN_STONE) {
             val--;
             break ;
@@ -270,8 +301,11 @@ int	AI::check_diagNW(const Game::Pos &pos) {
     save = i;
     i = 1;
     while ((pos.x + i) >= 0 && (pos.y - i) <= m_game->height() && i <= 4 && m_game->boardGet(pos.x + i, pos.y - i) != EMPTY_CASE) {
-        if (m_game->boardGet(pos.x + i, pos.y - i) == OPPONENT_STONE)
+        if (m_game->boardGet(pos.x + i, pos.y - i) == OPPONENT_STONE) {
             val += 2 * save;
+            if (i >= 3)
+                m_isCritical = true;
+        }
         if (m_game->boardGet(pos.x + i, pos.y - i) == OWN_STONE) {
             val--;
             break;
