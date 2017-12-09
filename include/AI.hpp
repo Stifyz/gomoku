@@ -20,7 +20,6 @@ public:
 private:
     const std::shared_ptr<Game> m_game;
     MyMultiset<Game::Pos, int>	m_moveAi;
-    bool                        m_isCritical = false;
 
     Game::Pos getRandomPos(const std::list<Game::Pos> &list);
 
