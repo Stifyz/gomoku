@@ -10,3 +10,4 @@ CTestTestfile.cmake
 *.o
 .idea/*
 cmake-build-debug/*
+pbrain-GroMoCrew.exe

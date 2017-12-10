@@ -162,10 +162,10 @@ void Protocol::begin(const std::string &arg) {
 }
 
 void Protocol::board(const std::string &arg) {
-    if (m_lastAction != Action::START && m_lastAction != Action::RESTART && m_lastAction != Action::RECSTART) {
-        send(Action::ERROR, "Command BOARD must be sended after START, RESTART or RECSTART command.");
-        return ;
-    }
+    //if (m_lastAction != Action::START && m_lastAction != Action::RESTART && m_lastAction != Action::RECSTART) {
+    //    send(Action::ERROR, "Command BOARD must be sended after START, RESTART or RECSTART command.");
+    //    return ;
+    //}
     std::string buf;
     Game::Pos pos;
     int value;
